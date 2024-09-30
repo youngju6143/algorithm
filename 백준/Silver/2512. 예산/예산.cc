@@ -51,43 +51,33 @@ int main() {
     
     cin >> target;
     
-    // 모든 배열의 값이 다 같을 떄
-    if (v.size() == 1) {
-        ans = target / n;
-        
-    // 배열의 값이 하나라도 다를 때
-    } else {
-        while(1) {
-            int mid = (low + high) / 2;
-            if (low > high) {
-                ans = v[mid];
-                break;
-            }
-    //        cout << "v[mid] : " << v[mid] << endl;
-            
-            for (int i = 0; i < n; i++) {
-                if (v[mid] > money[i])
-                    sum += money[i];
-                else
-                    sum += v[mid];
-            }
-            if (sum == target) {
-                ans = v[mid];
-                break;
-            }
-            if (sum > target)
-                high = mid - 1;
-            else
-                low = mid + 1;
-            
-            sum = 0;
-    //        cout << "low : " << v[low] << ", high : " << v[high] << endl;
-    //        cout << "--------------------" << endl;
+    while(1) {
+        int mid = (low + high) / 2;
+        if (low > high) {
+            ans = v[mid];
+            break;
         }
+//        cout << "v[mid] : " << v[mid] << endl;
+        
+        for (int i = 0; i < n; i++) {
+            if (v[mid] > money[i])
+                sum += money[i];
+            else
+                sum += v[mid];
+        }
+        if (sum == target) {
+            ans = v[mid];
+            break;
+        }
+        if (sum > target)
+            high = mid - 1;
+        else
+            low = mid + 1;
+        
+        sum = 0;
+//        cout << "low : " << v[low] << ", high : " << v[high] << endl;
+//        cout << "--------------------" << endl;
     }
-    
-    
-    
         
     cout << ans << endl;
     return 0;
