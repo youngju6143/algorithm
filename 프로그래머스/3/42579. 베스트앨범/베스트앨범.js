@@ -22,8 +22,6 @@ function solution(genres, plays) {
   sumTable.sort((a, b) => b.play - a.play);
   songTable.sort((a, b) => b.play - a.play);
 
-  console.log(sumTable);
-  console.log(songTable);
   var answer = [];
 
   sumTable.forEach((element) => {
@@ -31,7 +29,6 @@ function solution(genres, plays) {
     songTable.forEach((song) => {
       if (cnt < 2 && song.genre == element.genre) {
         answer.push(song.id);
-        console.log(cnt);
         cnt += 1;
       }
     });
